@@ -7,16 +7,17 @@ import retrofit2.Call
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface Interface {
 
 
     @GET("https://jsonplaceholder.typicode.com/todos")
-    fun getAllItem(): Call<ResponseGetAllItemItem>
+    fun getAllItem(): Call<List<ResponseGetAllItemItem>>
 
-    @GET("https://jsonplaceholder.typicode.com/todos")
+    @GET("https://jsonplaceholder.typicode.com/todos/{id}")
     fun getItemDetail(
-        @Query("id") id : Int
+        @Path("id") id : Int
     ): Call<ResponseGetItemDetail>
 }

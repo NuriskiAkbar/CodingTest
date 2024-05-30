@@ -46,16 +46,16 @@ class FragmentA : Fragment() {
     @SuppressLint("SuspiciousIndentation")
     private fun getItemList(function: (List<ResponseGetAllItemItem>) -> Unit) {
         val apiService = ApiService.getInstance().create(Interface::class.java)
-            apiService.getAllItem().enqueue(object : Callback<ResponseGetAllItemItem>{
+            apiService.getAllItem().enqueue(object : Callback<List<ResponseGetAllItemItem>>{
                 override fun onResponse(
-                    call: Call<ResponseGetAllItemItem>,
-                    response: Response<ResponseGetAllItemItem>
+                    call: Call<List<ResponseGetAllItemItem>>,
+                    response: Response<List<ResponseGetAllItemItem>>
                 ) {
                     val data = response.body()
                     return function( data as List<ResponseGetAllItemItem>)
                 }
 
-                override fun onFailure(call: Call<ResponseGetAllItemItem>, t: Throwable) {
+                override fun onFailure(call: Call<List<ResponseGetAllItemItem>>, t: Throwable) {
                     Log.d("error fetch","ini errornya : $t")
                 }
 

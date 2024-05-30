@@ -26,7 +26,7 @@ class ItemsAdapter(private val item: List<ResponseGetAllItemItem>):
 
             binding.tvclick.setOnClickListener {
                 val bundle =  Bundle()
-                bundle.putString("id", items.id.toString())
+                items.id?.let { it1 -> bundle.putInt("id", it1) }
                 binding.root.context.startActivity(Intent(binding.root.context, ActivityB::class.java).putExtras(bundle))
             }
         }
